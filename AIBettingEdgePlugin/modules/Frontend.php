@@ -68,8 +68,6 @@ class Frontend {
         wp_update_post($page);
       }
 
-      return True;
-
       // Generate pages
       foreach ($result as $item) {
         try {
