@@ -42,14 +42,14 @@ class Helper {
       $html .= "<div class='w-full p-3'>";
       $html .= "<div class='flex flex-row p-5 rounded-lg shadow-sm hover:shadow-md cursor-pointer transition-all duration-250'>";
 
-      $html .= "<div class='flex flex-grow ml-4'>"; // Col 1
-      $html .= "$team_home <br>";
-      $html .= "$team_away";
+      $html .= "<div class='flex flex-col flex-grow ml-4'>"; // Col 1
+      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/200px-Circle_Davys-Grey_Solid.svg.png' />$team_home</div>";
+      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/200px-Circle_Davys-Grey_Solid.svg.png' />$team_away</div>";
       $html .= "</div>";
 
       $html .= "<div class='flex flex-col'>"; // Col 2
       $html .= "<div class=''>Today</div>";
-      $html .= "<div class=''>$date[1]</div>";
+      $html .= "<div class=''>" . date("g:i a", strtotime($date[1])) . "</div>";
       $html .= "<div class='mt-3 w-16'><a class='flex justify-center py-1 px-2 font-semibold bg-blue-500 text-white no-underline hover:bg-blue-600 hover:shadow-md rounded-lg transition-all duration-250' href='/{$slug}'>View</a></div>";
       $html .= "</div>";
 
