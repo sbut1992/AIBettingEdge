@@ -26,6 +26,10 @@ class Helper {
     foreach ($data as $item) {
       $team_home = $item->team_home;
       $team_away = $item->team_away;
+      $logo_dir = "https://aibettingedge.com/wp-content/uploads/logos/mlb/";
+      $team_home_logo = $logo_dir . sanitize_title_with_dashes($team_home) . ".png";
+      $team_away_logo = $logo_dir . sanitize_title_with_dashes($team_away) . ".png";
+
       $title = "$team_home vs $team_away";
       $slug = sanitize_title_with_dashes($title);
       $date = explode(' ', $item->game_date, 2);
@@ -33,8 +37,8 @@ class Helper {
       $html .= "<div class='flex flex-row p-5 rounded-lg shadow-sm hover:shadow-md cursor-pointer transition-all duration-250'>";
 
       $html .= "<div class='flex flex-col flex-grow ml-4'>"; // Col 1
-      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/200px-Circle_Davys-Grey_Solid.svg.png' />$team_home</div>";
-      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='//upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Circle_Davys-Grey_Solid.svg/200px-Circle_Davys-Grey_Solid.svg.png' />$team_away</div>";
+      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='$team_home_logo' />$team_home</div>";
+      $html .= "<div class='flex font-medium items-center my-1'><img class='inline-block w-6 h-6 mr-2' src='$team_away_logo' />$team_away</div>";
       $html .= "</div>";
 
       $html .= "<div class='flex flex-col'>"; // Col 2
