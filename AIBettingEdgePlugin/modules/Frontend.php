@@ -42,6 +42,10 @@ class Frontend {
       $query = "SELECT * FROM Games WHERE DATE_FORMAT(game_date, '%Y-%m-%d') = '$date';";
       $result = $wpdb->get_results($query);
 
+      // Form post date
+      $post_date = date_create($date);
+      $post_date_str = $post_date->format('Y-m-d');
+
       // Generate Today's Schedule
       $pageId = null;
       $pageExists =  get_page_by_title($todayPageTitle);
@@ -49,7 +53,7 @@ class Frontend {
         $pageId = $pageExists->ID;
       }
 
-      $content = Helper::render_today_pretty_table($result);
+      $content = Helper::render_today_pretty_table($result, $post_date_str);
 
       $page = array(
         'ID' => $pageId,
@@ -85,8 +89,9 @@ class Frontend {
             'ID' => $postId,
             'post_title' => $title,
             'post_name' => $slug,
-            'post_status' => 'publish',
-            'post_content' => $title
+            'post_date' => $post_date->format('Y-m-d H:i:s'),
+            'post_content' => $title,
+            'post_status' => 'publish'
           );
 
           if (empty($postExists)) {

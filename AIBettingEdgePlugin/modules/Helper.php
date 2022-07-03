@@ -16,7 +16,7 @@ class Helper {
     include dirname(dirname(__FILE__)) . "/templates/{$name}.php";
   }
 
-  public static function render_today_pretty_table($data) {
+  public static function render_today_pretty_table($data, $date_str) {
     $html = "";
     $html .= "<div class='flex flex-col w-full max-w-2xl text-sm'>";
     $html .= "<div class='header font-bold'>Today</div>";
@@ -44,7 +44,7 @@ class Helper {
       $html .= "<div class='flex flex-col'>"; // Col 2
       $html .= "<div class=''>Today</div>";
       $html .= "<div class=''>" . date("g:i a", strtotime($date[1])) . "</div>";
-      $html .= "<div class='mt-3 w-16'><a class='flex justify-center py-1 px-2 font-semibold bg-blue-500 text-white no-underline hover:bg-blue-600 hover:shadow-md rounded-lg transition-all duration-250' href='/{$slug}'>View</a></div>";
+      $html .= "<div class='mt-3 w-16'><a class='flex justify-center py-1 px-2 font-semibold bg-blue-500 text-white no-underline hover:bg-blue-600 hover:shadow-md rounded-lg transition-all duration-250' href='/$date_str/{$slug}'>View</a></div>";
       $html .= "</div>";
 
       $html .= "</div>";
